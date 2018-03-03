@@ -1,0 +1,33 @@
+body{
+    background-color: lightslategray;
+}
+.input{
+    transition-duration: 1s;
+}
+#form{
+    width: 60%;
+    height: fit-content;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: azure;
+}
+@keyframes error{
+    from {
+        border-color: red;
+    }
+    to{
+        border-color: blue;
+    }
+}
+.text{
+    border-color: red;
+    width: 60%;
+    font-family: monospace;
+    font-size: 20px;
+    height: 80px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+}
