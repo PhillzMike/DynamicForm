@@ -10,26 +10,29 @@ window.onload = () => {
     for(let i = 0;i<s.length;i++){
         getInputBox(s[i]).addEventListener("mouseout", checkValidity);
         s[i].style.display = "none";
+        getInputBox(s[i]).style.animation = 'none';
     }
     var first = document.getElementById("1");
-    changeDisplay(first,root.text);
+    ShowDiv(first,root.text);
 }
 getInputBox = function(element){
     return element.children[1];
 }
 checkValidity = function(){
     if(array.includes(this.parentNode.id) && array[array.length-1] != this.parentNode.id){
-        // let i = array.indexOf(this.id) + 1;
+         let indexOfElement = array.indexOf(this.parentNode.id);
+         let i = array.length - 1;
         // array.splice(i,array.length-i+1);
-        while(i<array.length){
-            changeDisplay(document.getElementById(array[i]),"");
+        while(i> indexOfElement){
+            HideDiv(document.getElementById(array[i]),"");
+            i--;
         }
     }
     let text = this.value;
     if(this.parentNode.id in s.getNodes()){
         let node = s.getNodes()[this.parentNode.id];
         if(text in node.getChildren()){
-            changeDisplay(document.getElementById(node.getChildren()[text].name),node.getChildren()[text].text)
+            ShowDiv(document.getElementById(node.getChildren()[text].name),node.getChildren()[text].text)
         }else{
             changeBorder(document.getElementById(node.name));
         }
@@ -56,24 +59,37 @@ getLabel = (element) => {
     return element.children[0];
 }
 changeBorder = function(element){
-    element.style.borderColor = "red";
-    element.style.animationName = "error";
-    element.style.animationIterationCount = "2";
-    element.style.animationDuration = "2s";
-    //add animation .start
+    setTimeout(()=>{
+        getInputBox(element).style.animation = '';
+    },10);
+
+    getInputBox(element).style.animation = 'none';
 }
-changeDisplay = function(divElement, text){
-    if(divElement.style.display == "none"){
-        divElement.style.display = "block";
+
+ShowDiv = function(divElement,text){
+    divElement.style.display = "block";
+    if(!array.includes(divElement.id)){
         array.push(divElement.id);
-    }else{
-        divElement.style.display = "none";
-        let i = array.indexOf(divElement.id) + 1;
-        array.splice(i,1);
     }
-    
     getLabel(divElement).innerHTML = text;
 }
+HideDiv = function(divElement, text){
+    getInputBox(divElement).value = "";
+    divElement.style.display = "none";
+    let i = array.indexOf(divElement.id);
+    array.pop();
+    getLabel(divElement).innerHTML = text;
+}
+// changeDisplay = function(divElement, text){
+//     if(divElement.style.display == "none"){
+//         divElement.style.display = "block";
+//         array.push(divElement.id);
+//     }else{
+       
+//         console.log("ii" + i + "  array" + array.length);
+//     }
+    
+// }
 
 
 
