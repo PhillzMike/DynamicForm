@@ -4,6 +4,12 @@ body{
 .input{
     transition-duration: 1s;
 }
+#hello{
+    font-size: 30px;
+    font-variant: small-caps;
+    font-family: monospace;
+    text-align: center;
+}
 #form{
     width: 60%;
     height: fit-content;

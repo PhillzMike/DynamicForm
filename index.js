@@ -1,10 +1,42 @@
-let root = new Node("1", null,"How old are you??");
-let array = [];
-s = new Tree();
-s.addNode("1",root);
-let secondNode = new Node("2",root,"Small Boy");
-s.addNode("2",secondNode);
-root.addChild("7",secondNode);
+let root = new Node("1", null,"What area of life do you like(Science, Engineering)");
+    let array = [];
+    s = new Tree();
+    s.addNode("1",root);
+    let secondNode1 = new Node("2",root,"What area in science(Physical, chemical...)");
+    let secondNode2 = new Node("2",root,"What department exactly in engineering");
+    
+    root.addChild("science",secondNode1);
+    root.addChild("engineering",secondNode2);
+    let thirdNode1 = new Node("3",secondNode1,"Which department in physical sciences(Maths, computer..)");
+    let thirdNode2 = new Node("3",secondNode1,"Which department in chemical sciences(chemistry, biochemistry..)");
+    let thirdNode3 = new Node("3",secondNode1,"Which department in biological sciences(botany, ziology, genetics)");
+    secondNode1.addChild("physical", thirdNode1);
+    secondNode1.addChild("chemical", thirdNode2);
+    secondNode1.addChild("biological", thirdNode3);
+    let thirdNode4 = new Node("3",secondNode2,"Are you an applied mechanics, thermodynamics or fluid mechanics person?");
+    let thirdNode5 = new Node("3",secondNode2,"power, telecommunication or electronics??");
+    let thirdNode6 = new Node("3",secondNode2,"mechatronics, control or software engineering??");
+    secondNode2.addChild("mechanical", thirdNode4);
+    secondNode2.addChild("electrical", thirdNode5); 
+    secondNode2.addChild("systems", thirdNode6);
+    let fourthNode1 = new Node("4", thirdNode1,"What do you in computer sciences?(web programming, ML or Networking)")
+    let fourthNode2 = new Node("4", thirdNode1, "Focus: optics, mechanics  or electricity??");
+    let fourthNode3 = new Node("4", thirdNode1, "pure, applied or maths and comp?");
+    thirdNode1.addChild("computer sciences", fourthNode1);
+    thirdNode1.addChild("physics", fourthNode2);
+    thirdNode1.addChild("mathematics", fourthNode3);
+    s.addNode("2",secondNode1);
+    s.addNode("3",secondNode2);
+    s.addNode("4", thirdNode1);
+    s.addNode("5", thirdNode2);
+    s.addNode("6", thirdNode3);
+    s.addNode("7", thirdNode4);
+    s.addNode("8", thirdNode5);
+    s.addNode("9", thirdNode6);
+    s.addNode("10", fourthNode1);
+    s.addNode("11", fourthNode2);
+    s.addNode("12", fourthNode3);
+    let fourthNode4 = new Node("4", thirdNode2, "")
 window.onload = () => {
     let s = document.getElementsByClassName("input");
     for(let i = 0;i<s.length;i++){
@@ -29,30 +61,14 @@ checkValidity = function(){
         }
     }
     let text = this.value;
-    if(this.parentNode.id in s.getNodes()){
-        let node = s.getNodes()[this.parentNode.id];
+    if(this.parentNode.children[0].innerText in s.getNodes()){
+        let node = s.getNodes()[this.parentNode.children[0].innerText];
         if(text in node.getChildren()){
             ShowDiv(document.getElementById(node.getChildren()[text].name),node.getChildren()[text].text)
         }else{
             changeBorder(document.getElementById(node.name));
         }
     }
-    // if(array.length == 1){
-    //     if(text in s.getChildren()){
-    //         changeDisplay(document.getElementById(s.getChildren[text].name),s.getChildren[text].text)
-            
-    //     }else{
-    //         changeBorder(document.getElementById(s.getChildren[text].name));
-    //     }
-    // }
-    // else{
-    //     let getNode = s.getChildren(getLabel(document.getElementById(array[array.length-2])).value);
-    //     if(text in getNode.getChildren()){
-    //         changeDisplay(document.getElementById(getNode.getChildren[text].name),getNode.getChildren[text].text)
-    //     }else{
-    //         changeBorder(document.getElementById(getNode.getChildren[text].name));
-    //     }
-    // }
     
 }
 getLabel = (element) => {
@@ -80,21 +96,36 @@ HideDiv = function(divElement, text){
     array.pop();
     getLabel(divElement).innerHTML = text;
 }
-// changeDisplay = function(divElement, text){
-//     if(divElement.style.display == "none"){
-//         divElement.style.display = "block";
-//         array.push(divElement.id);
-//     }else{
-       
-//         console.log("ii" + i + "  array" + array.length);
-//     }
-    
-// }
-
-
 
 function FillTree(){
-    
+    let root = new Node("1", null,"What area of life do you like(Science, Engineering)");
+    let array = [];
+    s = new Tree();
+    s.addNode("1",root);
+    let secondNode1 = new Node("2",root,"What area in science(Physical, chemical...)");
+    let secondNode2 = new Node("2",root,"What department exactly in engineering");
+    s.addNode("2",secondNode1);
+    s.addNode("2",secondNode2);
+    root.addChild("science",secondNode1);
+    root.addChild("engineering",secondNode2);
+    let thirdNode1 = new Node("3",secondNode1,"Which department in physical sciences(Maths, computer..)");
+    let thirdNode2 = new Node("3",secondNode1,"Which department in chemical sciences(chemistry, biochemistry..)");
+    let thirdNode3 = new Node("3",secondNode1,"Which department in biological sciences(botany, ziology, genetics)");
+    secondNode1.addChild("physical", thirdNode1);
+    secondNode1.addChild("chemical", thirdNode2);
+    secondNode1.addChild("biological", thirdNode3);
+    let thirdNode4 = new Node("3",secondNode2,"Are you an applied mechanics, thermodynamics or fluid mechanics person?");
+    let thirdNode5 = new Node("3",secondNode2,"power, telecommunication or electronics??");
+    let thirdNode6 = new Node("3",secondNode2,"mechatronics, control or software engineering??");
+    secondNode2.addChild("mechanics", thirdNode4);
+    secondNode2.addChild("electrical", thirdNode5); 
+    secondNode2.addChild("systems", thirdNode6);
+    let fourthNode1 = new Node("4", thirdNode1,"What do you in computer sciences?(web programming, ML or Networking)")
+    let fourthNode2 = new Node("4", thirdMode1, "Focus: optics, mechanics  or electricity??");
+    let fourthNode3 = new Node("4", thirdNode1, "pure, applied or maths and comp?");
+    thirdNode1.addChild("computer sciences", fourthNode1);
+    thirdNode1.addChild("physics", fourthNode2);
+    thirdNode1.addChild("mathematics", fourthNode3);
 }
 function Tree(){
     this.node= Array();
@@ -103,7 +134,7 @@ function Tree(){
     }
 
     this.addNode = function(id,nod) {
-        this.node[id.toString()] = nod;
+        this.node[nod.text] = nod;
     }
     this.getNodes = () => {
         return this.node;
